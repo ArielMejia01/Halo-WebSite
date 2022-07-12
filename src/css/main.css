@@ -122,6 +122,8 @@ nav .mobile .links{
     flex-direction: column;
     position: relative;
     z-index: 200;
+
+    background-color: black;
 }
 
 nav .mobile .links a{
@@ -143,6 +145,22 @@ nav .mobile .links a:hover{
    background-color: white;
 }
 
+/*---------------------------------------------
+                    HEADER
+----------------------------------------------*/
+
+/*el background-position center center ayuda a que la imagen se vaya redimensionando
+segun cambia la pantalla y se ajusta
+Y el Background-size cover ayuda a redimensionar tambien la imagen de acuerdo
+al tamano de la pantalla.*/
+header{
+    background-image: url(../img/halo-infinite-cover-darkmode.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+
+
 @media screen and (max-width: 1137px) {
     nav .link-hide{
         display: none;
@@ -150,6 +168,10 @@ nav .mobile .links a:hover{
 
     nav .more{
         display: flex;
+    }
+
+    header{        
+        height: 70vh;
     }
 }
 
@@ -165,5 +187,10 @@ nav .mobile .links a:hover{
 
     nav .mobile{
         display: block;
+    }
+
+    header{        
+        background-position: center 40px;
+        height: 30vh;
     }
 }
