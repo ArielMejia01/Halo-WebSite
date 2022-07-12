@@ -160,6 +160,24 @@ header{
     height: 100vh;
 }
 
+/*---------------------------------------------
+                    BANNER
+----------------------------------------------*/
+
+#banner{
+    font-size: 1.4em;
+    text-align: center;
+    padding: 40px;
+    width: 400px;
+    position: absolute;
+    z-index: 100;
+    top: 200px;
+    right: 100px;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 @media screen and (max-width: 1137px) {
     nav .link-hide{
