@@ -53,7 +53,7 @@ let current = 0;
 /*Cuando se de click en bNext la variable current aumentara a 1. Luego
 se llamara una funcion renderizar para que dibuje el video*/
 
-bNext.addEventListener('click', (e) =>{
+bNext.addEventListener('click', (e) => {
     let changed = current;
     //si current es menor o igual a 1 quiere decir que ya llego al final
     //si eso es verdad entonces current +1 si no solo regreso current, para
@@ -61,19 +61,19 @@ bNext.addEventListener('click', (e) =>{
     current = current + 1 < videos.length ? current + 1 : current;
 
     //con esta decision evitamos que el usuario este  dando clicks adicionales
-    if(current != changed){
+    if (current !== changed){
         //renderizar el video, videos es el arreglo en la posicion current y la propiedad id
         renderCurrentVideo(videos[current].id);
     }    
 });
 
-bPrev.addEventListener('click', (e) =>{
+bPrev.addEventListener('click', (e) => {
     let changed = current;
     //Si current -1 (porque estoy decrementandolo)e s mayor o igual que 0 entonces si decrementa -1 si no regresa current
-    current = current -1 >= 0 ? current -1 : current;
+    current = current - 1 >= 0 ? current - 1 : current;
 
     //con esta decision evitamos que el usuario este  dando clicks adicionales
-    if(current != changed){
+    if (current !== changed){
         //renderizar el video, videos es el arreglo en la posicion current y la propiedad id
         renderCurrentVideo(videos[current].id);
     }  
@@ -84,8 +84,8 @@ renderCurrentVideo(videos[current].id);
 renderVideos();
 
 //Funcion para extraer el video segun el id
-function renderCurrentVideo(id){
-    currentContainer.innerHTML = `<iframe width="100%" height="579" src="https://www.youtube.com/embed/${id}" title="ENTRENAMIENTO INTENSO ⚡💪" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+function renderCurrentVideo(id) {
+    currentContainer.innerHTML = `<iframe width="100%" height="720" src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     
 };
 
@@ -93,14 +93,26 @@ function renderCurrentVideo(id){
 // En esta funcion extraemos con un enlace de get youtube thumbnail la miniatura
 //de un video y solo agregamos nuestro id para mostrar la caratula.
 function renderVideos(){
-    const html = videos.map(video =>{
+    const html = videos.map((video, index) => {
         return `
         <div class="item">
-            <a href="#">
-                <img src="https://i3.ytimg.com/vi/${video.id}/mqdefault.jpg"/>
-            </a>
-        <div/>`;
+          <a href="#" data-id="${index}">
+            <img src="https://i3.ytimg.com/vi/${video.id}/mqdefault.jpg" />
+          </a>
+        </div>`;
     });
 
-    videosContainer.innerHTML = html.join('');
+    videosContainer.innerHTML = html.join("");
+
+    //Cargar el video o reproducir el video seleccionado en la lista de videos
+    document.querySelectorAll(".item a").forEach((item) =>{
+        item.addEventListener("click", (e) =>{
+            e.preventDefault();
+
+            //el signo + lo convierte en numero y buscamos por la propiedad de data-id
+            const id = +item.getAttribute("data-id");
+            current = id;
+            renderCurrentVideo(videos[current].id);
+        });
+    });
 }
