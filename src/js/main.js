@@ -1,3 +1,6 @@
+import '../css/main.css';
+import '../css/scheme.css';
+
 //Referencias
 const moreOptions = document.querySelector("#bmore");
 const bShowMobileLinks = document.querySelector("#bmenu");
