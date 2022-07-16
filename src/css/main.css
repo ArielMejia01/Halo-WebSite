@@ -383,10 +383,18 @@ p{
     width: 600px;
     margin-right: 50px;
 
+    transition: background-color 0.3s ease;
 }
 
 .info p{
     font-size: 20px;
+}
+
+@media screen and (max-width: 1519px){
+    .info{
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+    }
 }
 
 @media screen and (max-width: 1198px) {
@@ -414,6 +422,15 @@ p{
 
     #slider #current iframe {
         height: 500px;
+    }
+
+    #multi-player{
+        background-position: center left;
+    }
+
+    .info{
+        width: 600px;
+        margin: 0 auto;
     }
 }
 
@@ -446,5 +463,14 @@ p{
 
     #slider #videos-container {
         display: none !important;
+    }
+
+    #multi-player{
+        background-position: -400px 0px;
+    }
+
+    .info{
+        width: 90%;
+        margin: 0 auto;
     }
 }
